@@ -64,7 +64,7 @@ public class LoteriaView extends JFrame{
 	}
 
 	/**
-	 * Mï¿½todo responsÃ¡vel pelas as aï¿½ï¿½es dos componentes.
+	 * Metodo responsavel pelas as acoes dos componentes.
 	 */
 	private void acaoComponentes(){
 		ckMegaSena.addMouseListener(new MouseListener() {
@@ -154,8 +154,8 @@ public class LoteriaView extends JFrame{
 	}
 
 	/**
-	 * Mï¿½todo responsï¿½vel por definir as
-	 * aï¿½ï¿½es dos checkboxs.
+	 * Metodo responsavel por definir as
+	 * acoes dos checkboxs.
 	 */
 	private void acaoCheckbox(){
 		if(ckMegaSena.isSelected()){
@@ -184,9 +184,9 @@ public class LoteriaView extends JFrame{
 	}
 
 	private void definirNomeComponente(){
-		lbNumerosSorteados.setText("NÃºmeros Sorteados:");
+		lbNumerosSorteados.setText("Números Sorteados:");
 		ckMegaSena.setText("Mega Sena");
-		ckLotofacil.setText("LotofÃ¡cil");
+		ckLotofacil.setText("Lotofácil");
 		ckQuina.setText("Quina");
 		btnSortear.setText("Sortear");
 		btnFechar.setText("Fechar");

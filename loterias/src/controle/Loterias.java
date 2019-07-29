@@ -16,7 +16,7 @@ public class Loterias {
 	private String numerosSorteados;
 
 	private String mensagemBancaria = "Ajude o desenvolvedor " + "\n" + "dados bancários para depósito: " + "\n" +
-			"Banco 33, Ag 0815  Cc 01003288-8" + "\n" + "Eduardo Monteiro de Andrade";
+			"Banco Santander 033, Ag 0815  CC 01003288-8" + "\n" + "Eduardo Monteiro de Andrade";
 
 	/**
 	 * Metodo responsavel por popular a lista de numeros 
