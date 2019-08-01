@@ -21,7 +21,7 @@ import controle.Loterias;
  * @author eduardo.andrade
  * @since 01/09/2014
  */
-public class LoteriaView extends JFrame{
+public class LoteriaView extends JFrame {
 
 	private static final long serialVersionUID = -6673004886460089120L;
 
@@ -79,6 +79,17 @@ public class LoteriaView extends JFrame{
 	 * Metodo responsavel pelas as acoes dos componentes.
 	 */
 	private void acaoComponentes() {
+		acaoCheckMegaSena();
+		acaoCheckQuina();
+		acaoCheckLotofacil();
+		acaoCheckLotofacil16();
+		acaoCheckLotofacil17();
+		acaoCheckLotofacil18();
+		acaoBtnFechar();
+		acaoBtnSortear();
+	}
+	
+	private void acaoCheckMegaSena() {
 		ckMegaSena.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {}
@@ -102,28 +113,9 @@ public class LoteriaView extends JFrame{
 				}
 			}
 		});
-		ckLotofacil.addMouseListener(new MouseListener() {
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			@Override
-			public void mouseExited(MouseEvent e) {}
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getClickCount() >= 1) {
-					ckMegaSena.setSelected(false);
-					ckQuina.setSelected(false);
-					ckLotofacil16.setSelected(false);
-					ckLotofacil17.setSelected(false);
-					ckLotofacil18.setSelected(false);
-					acaoCheckbox();
-					limparCampos();
-				}
-			}
-		});
+	}
+	
+	private void acaoCheckQuina() {
 		ckQuina.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {}
@@ -146,6 +138,34 @@ public class LoteriaView extends JFrame{
 				}
 			}
 		});
+	}
+	
+	private void acaoCheckLotofacil() {
+		ckLotofacil.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			@Override
+			public void mousePressed(MouseEvent e) {}
+			@Override
+			public void mouseExited(MouseEvent e) {}
+			@Override
+			public void mouseEntered(MouseEvent e) {}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount() >= 1) {
+					ckMegaSena.setSelected(false);
+					ckQuina.setSelected(false);
+					ckLotofacil16.setSelected(false);
+					ckLotofacil17.setSelected(false);
+					ckLotofacil18.setSelected(false);
+					acaoCheckbox();
+					limparCampos();
+				}
+			}
+		});
+	}
+	
+	private void acaoCheckLotofacil16() {
 		ckLotofacil16.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {}
@@ -168,6 +188,8 @@ public class LoteriaView extends JFrame{
 				}
 			}
 		});
+	}
+	private void acaoCheckLotofacil17() {
 		ckLotofacil17.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {}
@@ -190,6 +212,9 @@ public class LoteriaView extends JFrame{
 				}
 			}
 		});
+	}
+	
+	private void acaoCheckLotofacil18() {
 		ckLotofacil18.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {}
@@ -212,12 +237,18 @@ public class LoteriaView extends JFrame{
 				}
 			}
 		});
+	}
+	
+	private void acaoBtnFechar() {
 		btnFechar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
+	}
+	
+	private void acaoBtnSortear() {
 		btnSortear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -226,26 +257,21 @@ public class LoteriaView extends JFrame{
 				if(ckMegaSena.isSelected()) {
 					loterias.sortearNumerosMegaSena();
 					txtNumerosSorteadosMegaSena.setText(loterias.getNumerosSorteados());
-
-				} else if(ckLotofacil.isSelected()) {
-					loterias.sortearNumerosLotofacil(15);
-					txtNumerosSorteadosLotofacil.setText(loterias.getNumerosSorteados());
-
-				} else if(ckLotofacil16.isSelected()) {
-					loterias.sortearNumerosLotofacil(16);
-					txtNumerosSorteadosLotofacil16.setText(loterias.getNumerosSorteados());
-
-				} else if(ckLotofacil17.isSelected()) {
-					loterias.sortearNumerosLotofacil(17);
-					txtNumerosSorteadosLotofacil17.setText(loterias.getNumerosSorteados());
-
-				} else if(ckLotofacil18.isSelected()) {
-					loterias.sortearNumerosLotofacil(18);
-					txtNumerosSorteadosLotofacil18.setText(loterias.getNumerosSorteados());
-
 				} else if(ckQuina.isSelected()) {
 					loterias.sortearNumerosQuina();
 					txtNumerosSorteadosQuina.setText(loterias.getNumerosSorteados());
+				} else if(ckLotofacil.isSelected()) {
+					loterias.sortearNumerosLotofacil(15);
+					txtNumerosSorteadosLotofacil.setText(loterias.getNumerosSorteados());
+				} else if(ckLotofacil16.isSelected()) {
+					loterias.sortearNumerosLotofacil(16);
+					txtNumerosSorteadosLotofacil16.setText(loterias.getNumerosSorteados());
+				} else if(ckLotofacil17.isSelected()) {
+					loterias.sortearNumerosLotofacil(17);
+					txtNumerosSorteadosLotofacil17.setText(loterias.getNumerosSorteados());
+				} else if(ckLotofacil18.isSelected()) {
+					loterias.sortearNumerosLotofacil(18);
+					txtNumerosSorteadosLotofacil18.setText(loterias.getNumerosSorteados());
 				}
 				txtaMensagem.setText(loterias.getMensagemBancaria());
 			}
@@ -258,8 +284,11 @@ public class LoteriaView extends JFrame{
 	 */
 	private void acaoCheckbox() {
 		if(ckMegaSena.isSelected()) {
-			ckLotofacil.setSelected(false);
 			ckQuina.setSelected(false);
+			ckLotofacil.setSelected(false);
+			ckLotofacil16.setSelected(false);
+			ckLotofacil17.setSelected(false);
+			ckLotofacil18.setSelected(false);
 			txtNumerosSorteadosLotofacil.setVisible(false);
 			txtNumerosSorteadosLotofacil16.setVisible(false);
 			txtNumerosSorteadosLotofacil17.setVisible(false);
@@ -271,6 +300,9 @@ public class LoteriaView extends JFrame{
 		if(ckLotofacil.isSelected()) {
 			ckMegaSena.setSelected(false);
 			ckQuina.setSelected(false);
+			ckLotofacil16.setSelected(false);
+			ckLotofacil17.setSelected(false);
+			ckLotofacil18.setSelected(false);
 			txtNumerosSorteadosMegaSena.setVisible(false);
 			txtNumerosSorteadosQuina.setVisible(false);
 			txtNumerosSorteadosLotofacil16.setVisible(false);
@@ -280,8 +312,12 @@ public class LoteriaView extends JFrame{
 		}
 		
 		if(ckLotofacil16.isSelected()) {
+			ckLotofacil16.setSelected(true);
 			ckMegaSena.setSelected(false);
 			ckQuina.setSelected(false);
+			ckLotofacil.setSelected(false);
+			ckLotofacil17.setSelected(false);
+			ckLotofacil18.setSelected(false);
 			txtNumerosSorteadosMegaSena.setVisible(false);
 			txtNumerosSorteadosQuina.setVisible(false);
 			txtNumerosSorteadosLotofacil.setVisible(false);
@@ -291,8 +327,12 @@ public class LoteriaView extends JFrame{
 		}
 		
 		if(ckLotofacil17.isSelected()) {
+			ckLotofacil17.setSelected(true);
 			ckMegaSena.setSelected(false);
 			ckQuina.setSelected(false);
+			ckLotofacil.setSelected(false);
+			ckLotofacil16.setSelected(false);
+			ckLotofacil18.setSelected(false);
 			txtNumerosSorteadosMegaSena.setVisible(false);
 			txtNumerosSorteadosQuina.setVisible(false);
 			txtNumerosSorteadosLotofacil.setVisible(false);
@@ -302,8 +342,11 @@ public class LoteriaView extends JFrame{
 		}
 		
 		if(ckLotofacil18.isSelected()) {
+			ckLotofacil18.setSelected(true);
 			ckMegaSena.setSelected(false);
 			ckQuina.setSelected(false);
+			ckLotofacil.setSelected(false);
+			ckLotofacil17.setSelected(false);
 			txtNumerosSorteadosMegaSena.setVisible(false);
 			txtNumerosSorteadosQuina.setVisible(false);
 			txtNumerosSorteadosLotofacil.setVisible(false);

@@ -11,11 +11,11 @@ import java.util.Random;
  */
 public class Loterias {
 
-	private List<Integer> listaDeNumeros = new ArrayList<Integer>();
+	private List<Integer> listaDeNumeros;
 
 	private String numerosSorteados;
 
-	private String mensagemBancaria = "Ajude o desenvolvedor " + "\n" + "dados bancários para depósito: " + "\n" +
+	private String mensagemBancaria = "Ajude o desenvolvedor do sistema, os dados bancários para depósito: " + "\n" +
 			"Banco Santander 033, Ag 0815  CC 01003288-8" + "\n" + "Eduardo Monteiro de Andrade";
 
 	/**
@@ -23,9 +23,9 @@ public class Loterias {
 	 * mais sorteados da megasena.
 	 */
 	private void popularListaDeNumerosMaisSorteadosMegaSena() {
-		listaDeNumeros = new ArrayList<>();
+		iniciarLista();
 
-		Integer numerosMaisSorteadosMegaSena[] = {5,4,53,54,51,42,33,17,24,52,49,43,13,10,29,41,36,28,50,32,44,23,16,47,30,12,2,8,31,27,7,59,34,6,37,56,38,58,46,18,40,20,60,3,11,35,57,14,19,45,25,48,15,55,21,39,9,26,22,9,7,3,1};
+		Integer numerosMaisSorteadosMegaSena[] = listaMegaSena();
 		listaDeNumeros.add(numerosMaisSorteadosMegaSena[0]);
 		listaDeNumeros.add(numerosMaisSorteadosMegaSena[1]);
 		listaDeNumeros.add(numerosMaisSorteadosMegaSena[2]);
@@ -96,9 +96,9 @@ public class Loterias {
 	 * mais sorteados da lotofacil.
 	 */
 	private void popularListaDeNumerosMaisSorteadosLotofacil() {
-		listaDeNumeros = new ArrayList<>();
+		iniciarLista();
 
-		Integer numerosMaisSorteadosLotoFacil[] = {11, 2, 24, 13, 4, 21, 1, 23, 12, 19, 6, 22, 14, 10, 25, 3, 9, 20, 17, 15, 07, 5, 18, 16, 8, 3};
+		Integer numerosMaisSorteadosLotoFacil[] = listaLotoFacil();
 		listaDeNumeros.add(numerosMaisSorteadosLotoFacil[0]);
 		listaDeNumeros.add(numerosMaisSorteadosLotoFacil[1]);
 		listaDeNumeros.add(numerosMaisSorteadosLotoFacil[2]);
@@ -136,9 +136,8 @@ public class Loterias {
 	 * mais sorteados da Quina.
 	 */
 	private void popularListaDeNumerosMaisSorteadosQuina() {
-		listaDeNumeros = new ArrayList<>();
-
-		Integer numerosMaisSorteadosQuina[] = {19,7,74,51,45,76,48,68,13,37,77,75,69,22,12,34,62,46,33,70,9,41,25,80,55,36,60,50,8,2,66,78,32,63,43,30,57,11,21,47,65,24,58,35,23,67,17,3,20,6,39,4,52,49,53,16,40,44,29,73};
+		iniciarLista();
+		Integer numerosMaisSorteadosQuina[] = listaQuina();
 		listaDeNumeros.add(numerosMaisSorteadosQuina[0]);
 		listaDeNumeros.add(numerosMaisSorteadosQuina[1]);
 		listaDeNumeros.add(numerosMaisSorteadosQuina[2]);
@@ -202,7 +201,7 @@ public class Loterias {
 	}
 
 	public void sortearNumerosMegaSena() {
-		numerosSorteados = new String();
+		iniciarCampoSorteado();
 
 		popularListaDeNumerosMaisSorteadosMegaSena();
 		Random random = new Random();
@@ -232,11 +231,11 @@ public class Loterias {
 		valor6 = listaDeNumeros.remove(numero);
 		Collections.shuffle(listaDeNumeros);
 
-		numerosSorteados = "      " + valor1 + " - " + valor2 + " - " + valor3 + " - " + valor4 + " - " + valor5 + " - " + valor6;
+		numerosSorteados = " " + valor1 + " - " + valor2 + " - " + valor3 + " - " + valor4 + " - " + valor5 + " - " + valor6;
 	}
 
 	public void sortearNumerosQuina() {
-		numerosSorteados = new String();
+		iniciarCampoSorteado();
 		popularListaDeNumerosMaisSorteadosQuina();
 		Random random = new Random();
 		int numero = random.nextInt(listaDeNumeros.size());
@@ -261,11 +260,11 @@ public class Loterias {
 		valor5 = listaDeNumeros.remove(numero);
 		Collections.shuffle(listaDeNumeros);
 
-		numerosSorteados = "      " + valor1 + " - " + valor2 + " - " + valor3 + " - " + valor4 + " - " + valor5;
+		numerosSorteados = " " + valor1 + " - " + valor2 + " - " + valor3 + " - " + valor4 + " - " + valor5;
 	}
 
 	public void sortearNumerosLotofacil(Integer tipo) {
-		numerosSorteados = new String();
+		iniciarCampoSorteado();
 
 		popularListaDeNumerosMaisSorteadosLotofacil();
 		Random random = new Random();
@@ -370,6 +369,29 @@ public class Loterias {
 			
 			numerosSorteados += " -" + valor16 + " -" + valor17 + " -" + valor18;
 		}
+	}
+	
+	private Integer[] listaQuina() {
+		Integer numerosMaisSorteadosQuina[] = {19,7,74,51,45,76,48,68,13,37,77,75,69,22,12,34,62,46,33,70,9,41,25,80,55,36,60,50,8,2,66,78,32,63,43,30,57,11,21,47,65,24,58,35,23,67,17,3,20,6,39,4,52,49,53,16,40,44,29,73};
+		return numerosMaisSorteadosQuina;
+	}
+	
+	private Integer[] listaMegaSena() {
+		Integer numerosMaisSorteadosMegaSena[] = {5,4,53,54,51,42,33,17,24,52,49,43,13,10,29,41,36,28,50,32,44,23,16,47,30,12,2,8,31,27,7,59,34,6,37,56,38,58,46,18,40,20,60,3,11,35,57,14,19,45,25,48,15,55,21,39,9,26,22,9,7,3,1};
+		return numerosMaisSorteadosMegaSena;
+	}
+	
+	private Integer[] listaLotoFacil() {
+		Integer numerosMaisSorteadosLotoFacil[] = {11, 2, 24, 13, 4, 21, 1, 23, 12, 19, 6, 22, 14, 10, 25, 3, 9, 20, 17, 15, 07, 5, 18, 16, 8, 3};
+		return numerosMaisSorteadosLotoFacil;
+	}
+	
+	private void iniciarLista() {
+		listaDeNumeros = new ArrayList<Integer>();
+	}
+	
+	private void iniciarCampoSorteado() {
+		numerosSorteados = new String();
 	}
 
 	public List<Integer> getListaDeNumeros() {
