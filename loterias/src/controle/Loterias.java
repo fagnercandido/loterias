@@ -22,7 +22,7 @@ public class Loterias {
 	 * Metodo responsavel por popular a lista de numeros 
 	 * mais sorteados da megasena.
 	 */
-	private void popularListaDeNumerosMaisSorteadosMegaSena(){
+	private void popularListaDeNumerosMaisSorteadosMegaSena() {
 		listaDeNumeros = new ArrayList<>();
 
 		Integer numerosMaisSorteadosMegaSena[] = {5,4,53,54,51,42,33,17,24,52,49,43,13,10,29,41,36,28,50,32,44,23,16,47,30,12,2,8,31,27,7,59,34,6,37,56,38,58,46,18,40,20,60,3,11,35,57,14,19,45,25,48,15,55,21,39,9,26,22,9,7,3,1};
@@ -95,7 +95,7 @@ public class Loterias {
 	 * Metodo responsavel por popular a lista de numeros
 	 * mais sorteados da lotofacil.
 	 */
-	private void popularListaDeNumerosMaisSorteadosLotofacil(){
+	private void popularListaDeNumerosMaisSorteadosLotofacil() {
 		listaDeNumeros = new ArrayList<>();
 
 		Integer numerosMaisSorteadosLotoFacil[] = {11, 2, 24, 13, 4, 21, 1, 23, 12, 19, 6, 22, 14, 10, 25, 3, 9, 20, 17, 15, 07, 5, 18, 16, 8, 3};
@@ -127,7 +127,7 @@ public class Loterias {
 		listaDeNumeros.add(numerosMaisSorteadosLotoFacil[25]);
 	}
 
-	private Integer numerosSorteados(Integer numero){
+	private Integer numerosSorteados(Integer numero) {
 		return (int)(Math.random() * numero);
 	}
 
@@ -135,7 +135,7 @@ public class Loterias {
 	 * Metodo responsavel por popular a lista de numeros
 	 * mais sorteados da Quina.
 	 */
-	private void popularListaDeNumerosMaisSorteadosQuina(){
+	private void popularListaDeNumerosMaisSorteadosQuina() {
 		listaDeNumeros = new ArrayList<>();
 
 		Integer numerosMaisSorteadosQuina[] = {19,7,74,51,45,76,48,68,13,37,77,75,69,22,12,34,62,46,33,70,9,41,25,80,55,36,60,50,8,2,66,78,32,63,43,30,57,11,21,47,65,24,58,35,23,67,17,3,20,6,39,4,52,49,53,16,40,44,29,73};
@@ -201,7 +201,7 @@ public class Loterias {
 		listaDeNumeros.add(numerosMaisSorteadosQuina[59]);
 	}
 
-	public void sortearNumerosMegaSena(){
+	public void sortearNumerosMegaSena() {
 		numerosSorteados = new String();
 
 		popularListaDeNumerosMaisSorteadosMegaSena();
@@ -264,7 +264,7 @@ public class Loterias {
 		numerosSorteados = "      " + valor1 + " - " + valor2 + " - " + valor3 + " - " + valor4 + " - " + valor5;
 	}
 
-	public void sortearNumerosLotofacil() {
+	public void sortearNumerosLotofacil(Integer tipo) {
 		numerosSorteados = new String();
 
 		popularListaDeNumerosMaisSorteadosLotofacil();
@@ -330,10 +330,46 @@ public class Loterias {
 		Integer valor15 = numerosSorteados(numero);
 		valor15 = listaDeNumeros.remove(numero);
 		Collections.shuffle(listaDeNumeros);
-
+		
 		numerosSorteados =  "  " + valor1 + " -"
-					  		+ valor2 + " -" + valor3 + " -" + valor4 + " -" + valor5 + " -" + valor6 + " -" + valor7 + " -" + valor8 + " -"
-					  		+ valor9 + " -" + valor10 + " -" + valor11 + " -" + valor12 + " -" + valor13 + " -" + valor14 + " -" + valor15;
+		  		+ valor2 + " -" + valor3 + " -" + valor4 + " -" + valor5 + " -" + valor6 + " -" + valor7 + " -" + valor8 + " -"
+		  		+ valor9 + " -" + valor10 + " -" + valor11 + " -" + valor12 + " -" + valor13 + " -" + valor14 + " -" + valor15;
+		
+		if(tipo == 16) {
+			Integer valor16 = numerosSorteados(numero);
+			valor16 = listaDeNumeros.remove(numero);
+			Collections.shuffle(listaDeNumeros);
+			
+			numerosSorteados += " -" + valor16;
+		}
+		
+		if(tipo == 17) {
+			Integer valor16 = numerosSorteados(numero);
+			valor16 = listaDeNumeros.remove(numero);
+			Collections.shuffle(listaDeNumeros);
+			
+			Integer valor17 = numerosSorteados(numero);
+			valor17 = listaDeNumeros.remove(numero);
+			Collections.shuffle(listaDeNumeros);
+			
+			numerosSorteados += " -" + valor16 + " -" + valor17;
+		}
+		
+		if(tipo == 18) {
+			Integer valor16 = numerosSorteados(numero);
+			valor16 = listaDeNumeros.remove(numero);
+			Collections.shuffle(listaDeNumeros);
+			
+			Integer valor17 = numerosSorteados(numero);
+			valor17 = listaDeNumeros.remove(numero);
+			Collections.shuffle(listaDeNumeros);
+			
+			Integer valor18 = numerosSorteados(numero);
+			valor18 = listaDeNumeros.remove(numero);
+			Collections.shuffle(listaDeNumeros);
+			
+			numerosSorteados += " -" + valor16 + " -" + valor17 + " -" + valor18;
+		}
 	}
 
 	public List<Integer> getListaDeNumeros() {
